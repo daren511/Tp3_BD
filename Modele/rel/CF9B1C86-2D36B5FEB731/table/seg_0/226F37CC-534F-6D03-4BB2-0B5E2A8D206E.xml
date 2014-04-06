@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="226F37CC-534F-6D03-4BB2-0B5E2A8D206E" name="ArtisteDisques">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:29:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="NumeroArtiste" id="0B8C03C4-7C2E-2F09-4AD5-7B831FC1D5BD">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:30:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<delegate>B5EE0496-BB7A-5601-3537-9753FF638BFE</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BAA4A28D-0E87-F793-63EC-E8A0BEDA36EB" referredColumn="B5EE0496-BB7A-5601-3537-9753FF638BFE"/>
+</associations>
+</Column>
+<Column name="NumeroDisque" id="A4473A98-5253-7791-367F-53D18C0C08B6">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:30:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>5</dataTypeScale>
+<delegate>A9BD1D74-D879-E7FE-3AFB-3F894C0B6C47</delegate>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3164FBDF-361C-42A4-2C30-48BE46D1CD46" referredColumn="A9BD1D74-D879-E7FE-3AFB-3F894C0B6C47"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="350E8417-297E-5A5F-17DB-DC7A2EE84AA1" name="ArtisteDisques_PK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:30:27 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B8C03C4-7C2E-2F09-4AD5-7B831FC1D5BD"/>
+<colUsage columnID="A4473A98-5253-7791-367F-53D18C0C08B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="352BFE95-ADB8-346E-46A9-5817B589D00E" name="ArtisteDisques_Artistes_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:31:23 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B8C03C4-7C2E-2F09-4AD5-7B831FC1D5BD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2ED1ECCD-9533-73BC-D7CA-384B946CD05D" name="ArtisteDisques_Disques_FK">
+<createdBy>201093812</createdBy>
+<createdTime>2014-04-06 03:31:23 UTC</createdTime>
+<generatorID>Généré par l&apos;utilisateur</generatorID>
+<ownerDesignName>Modele</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4473A98-5253-7791-367F-53D18C0C08B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
