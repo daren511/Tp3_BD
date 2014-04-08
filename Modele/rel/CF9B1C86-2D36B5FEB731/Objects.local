@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <oracle.dbtools.crest.model.design.relational.RelationalDesign>
-   <object objectType="Table" objectID="226F37CC-534F-6D03-4BB2-0B5E2A8D206E" name="ArtisteDisques" seqName="seg_0"/>
    <object objectType="Table" objectID="0F701232-FD35-A9A1-9C19-2A64E5935ED5" name="Artistes" seqName="seg_0"/>
-   <object objectType="Table" objectID="33BB054E-83AE-1BCA-A775-6947CF28CB88" name="Disques" seqName="seg_0"/>
    <object objectType="Table" objectID="14ABBF35-B813-DA27-111F-77274BBDC07E" name="Genres" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="BAA4A28D-0E87-F793-63EC-E8A0BEDA36EB" name="ArtisteDisques_Artistes_FK" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="3164FBDF-361C-42A4-2C30-48BE46D1CD46" name="ArtisteDisques_Disques_FK" seqName="seg_0"/>
+   <object objectType="Table" objectID="226F37CC-534F-6D03-4BB2-0B5E2A8D206E" name="ArtisteDisques" seqName="seg_0"/>
+   <object objectType="Table" objectID="33BB054E-83AE-1BCA-A775-6947CF28CB88" name="Disques" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="082FFF8D-8675-A5AB-7DDB-D903A54FDB60" name="Disques_Genres_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="3164FBDF-361C-42A4-2C30-48BE46D1CD46" name="ArtisteDisques_Disques_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="BAA4A28D-0E87-F793-63EC-E8A0BEDA36EB" name="ArtisteDisques_Artistes_FK" seqName="seg_0"/>
 </oracle.dbtools.crest.model.design.relational.RelationalDesign>
