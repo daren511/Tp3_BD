@@ -21,6 +21,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
      */
     public AjoutArtisteForm(ConnectionOracle conn) {
         initComponents();
+        this.connBD = conn;
     }
 
     /**
@@ -120,24 +121,27 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
 
     private void BTN_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OKActionPerformed
         // TODO add your handling code here:
-      String sqlajout ="insert into artistes (numeroArtiste,nomartiste,prenomartiste,nationalite) values(?,?,?,?)";
-      int numArtiste = Integer.parseInt(TB_AjoutNumArtiste.getText());
+      String sqlajout ="insert into artistes (nomartiste,prenomartiste,nationalite) values(?,?,?)";
+      //int numArtiste = Integer.parseInt(TB_AjoutNumArtiste.getText());
       String nomArtiste= TB_AjoutNomArtiste.getText();
       String prenomArtiste = TB_AjoutPrenomArtiste.getText();
-      String NationaliteArtiste =TB_AjoutNationalite.getText();
+      String nationaliteArtiste =TB_AjoutNationalite.getText();
 
       try
          {
-            PreparedStatement stminsert=connBD.getConnection().prepareStatement(sqlajout);
-            stminsert.setInt(1, numArtiste);
-            stminsert.setString(2, nomArtiste);
-            stminsert.setString(3, prenomArtiste);
-            stminsert.setString(4, NationaliteArtiste);
+            PreparedStatement stminsert= connBD.getConnection().prepareStatement(sqlajout);
+           // stminsert.setInt(1, numArtiste);
+            stminsert.setString(1, nomArtiste);
+            stminsert.setString(2, prenomArtiste);
+            stminsert.setString(3, nationaliteArtiste);
             stminsert.executeUpdate();
          }
       
       catch(SQLException se){System.out.println("err" + se);}
-      this.dispose();
+      finally
+      {
+        this.dispose();
+      }
     }//GEN-LAST:event_BTN_OKActionPerformed
 
     /**

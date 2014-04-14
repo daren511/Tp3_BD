@@ -76,14 +76,16 @@ public class JFrameGestion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_DisquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DisquesActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         new GestionDisqueForm(connBD).setVisible(true);
+        this.dispose();
  
     }//GEN-LAST:event_BTN_DisquesActionPerformed
 
     private void BTN_ArtistesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ArtistesActionPerformed
         // TODO add your handling code here:
         new GestionArtistesForm(connBD).setVisible(true);
+        this.dispose();
   
     }//GEN-LAST:event_BTN_ArtistesActionPerformed
 

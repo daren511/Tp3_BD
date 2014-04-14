@@ -76,6 +76,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
     private void BTN_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OkActionPerformed
         // TODO add your handling code here:
          new JFrameGestion(connBD).setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_BTN_OkActionPerformed
 
     /**

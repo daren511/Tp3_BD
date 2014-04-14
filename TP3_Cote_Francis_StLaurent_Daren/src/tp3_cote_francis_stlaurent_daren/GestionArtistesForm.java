@@ -22,6 +22,9 @@ public class GestionArtistesForm extends javax.swing.JFrame {
     
     public GestionArtistesForm(ConnectionOracle conn) {
         initComponents();
+        this.connBD = conn;
+        // appel du bouton premier
+        BTN_Premier.doClick();
     }
 
     /**
@@ -69,12 +72,6 @@ public class GestionArtistesForm extends javax.swing.JFrame {
 
         TB_NumeroArtiste.setEnabled(false);
 
-        TB_NomArtiste.setEnabled(false);
-
-        TB_Nationalite.setEnabled(false);
-
-        TB_PrenomArtiste.setEnabled(false);
-
         BTN_Ajouter.setText("Ajouter");
         BTN_Ajouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +80,18 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         });
 
         BTN_Modifier.setText("Modifier");
+        BTN_Modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ModifierActionPerformed(evt);
+            }
+        });
 
         BTN_Supprimer.setText("Supprimer");
+        BTN_Supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_SupprimerActionPerformed(evt);
+            }
+        });
 
         BTN_Premier.setText("<<");
         BTN_Premier.addActionListener(new java.awt.event.ActionListener() {
@@ -122,81 +129,77 @@ public class GestionArtistesForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(BTN_Premier)
+                        .addGap(14, 14, 14)
+                        .addComponent(BTN_Precedent)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Suivant))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TB_NomArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(TB_NumeroArtiste)))
-                    .addComponent(jLabel3)
+                        .addComponent(TB_NumeroArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(32, 32, 32)
+                        .addComponent(TB_NomArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TB_PrenomArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(TB_Nationalite)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BTN_Premier)
-                        .addGap(14, 14, 14)
-                        .addComponent(BTN_Precedent)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_Suivant)))
-                .addGap(10, 10, 10)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TB_PrenomArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                            .addComponent(TB_Nationalite))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BTN_Ajouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BTN_Modifier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTN_Ajouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(2, 2, 2))
-                            .addComponent(BTN_Supprimer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(14, 14, 14))
+                            .addComponent(BTN_Supprimer, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BTN_Dernier)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(TB_NumeroArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTN_Ajouter))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(TB_NomArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BTN_Modifier)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TB_PrenomArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(TB_NumeroArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTN_Ajouter))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(TB_NomArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BTN_Modifier))
+                    .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TB_Nationalite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Supprimer))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(BTN_Supprimer)))
-                .addGap(18, 18, 18)
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(TB_PrenomArtiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TB_Nationalite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Premier)
-                    .addComponent(BTN_Dernier)
                     .addComponent(BTN_Precedent)
-                    .addComponent(BTN_Suivant))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                    .addComponent(BTN_Suivant)
+                    .addComponent(BTN_Dernier))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(BTN_OK)
                 .addContainerGap())
         );
@@ -211,38 +214,37 @@ public class GestionArtistesForm extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_OKActionPerformed
 
     private void BTN_PremierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PremierActionPerformed
-        // TODO add your handling code here:
-        /*
+      
         try 
      {
          Statement stm1 = connBD.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
          rst = stm1.executeQuery(sql1);
          if (rst.first())
          {
-          // il serait utile de faire une méthode pour cet affichage
-          // puis qu'il est utilisé plus d'une fois.
-            NumEmploye.setText (((Integer)rst.getInt("numemp")).toString());
-            NomEmploye.setText(rst.getString("nom"));
-            PrenomEmploye.setText(rst.getString("prenom"));
-            Salaire.setText (((Integer)rst.getInt("salaire")).toString());
+            TB_NumeroArtiste.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomArtiste.setText(rst.getString(2));
+            TB_PrenomArtiste.setText(rst.getString(3));
+            TB_Nationalite.setText (rst.getString(4));
          
          }
      }
-     catch(SQLException se){ System.out.println(se);}
-        */
+     catch(SQLException se)
+     { 
+         System.out.println(se);
+     }
+        
     }//GEN-LAST:event_BTN_PremierActionPerformed
 
     private void BTN_PrecedentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PrecedentActionPerformed
-        // TODO add your handling code here:
-        /*
+
         try 
        {
           if(rst.previous())
             {
-               NumEmploye.setText (((Integer)rst.getInt("numemp")).toString());
-               NomEmploye.setText(rst.getString("nom"));
-               PrenomEmploye.setText(rst.getString("prenom"));
-               Salaire.setText (((Integer)rst.getInt("salaire")).toString());
+                TB_NumeroArtiste.setText (((Integer)rst.getInt(1)).toString());
+                TB_NomArtiste.setText(rst.getString(2));
+                TB_PrenomArtiste.setText(rst.getString(3));
+                TB_Nationalite.setText (rst.getString(4));
             }
           else 
           {
@@ -255,25 +257,24 @@ public class GestionArtistesForm extends javax.swing.JFrame {
      {
         JOptionPane.showMessageDialog(this, "précedent impossible");
      }// TODO add your handling code here:
-        */
+        
     }//GEN-LAST:event_BTN_PrecedentActionPerformed
 
     private void BTN_SuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SuivantActionPerformed
-        // TODO add your handling code here:
-        /*
+      
         try 
      {
          if(rst.next())
           {
-               NumEmploye.setText (((Integer)rst.getInt("numemp")).toString());
-               NomEmploye.setText(rst.getString("nom"));
-               PrenomEmploye.setText(rst.getString("prenom"));
-               Salaire.setText (((Integer)rst.getInt("salaire")).toString());
-            }
+            TB_NumeroArtiste.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomArtiste.setText(rst.getString(2));
+            TB_PrenomArtiste.setText(rst.getString(3));
+            TB_Nationalite.setText (rst.getString(4));
+          }
       
          else 
           {
-         JOptionPane.showMessageDialog(this, "suivant impossible");
+            JOptionPane.showMessageDialog(this, "suivant impossible");
           }
      }
      
@@ -282,21 +283,19 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Suivant imposible");
      
      }
-        */
+       
     }//GEN-LAST:event_BTN_SuivantActionPerformed
 
     private void BTN_DernierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DernierActionPerformed
-        // TODO add your handling code here:
-        /*
-         
+  
       try 
       {
          if(rst.last())
          {
-              NumEmploye.setText (((Integer)rst.getInt("numemp")).toString());
-              NomEmploye.setText(rst.getString("nom"));
-              PrenomEmploye.setText(rst.getString("prenom"));
-              Salaire.setText (((Integer)rst.getInt("salaire")).toString());
+            TB_NumeroArtiste.setText (((Integer)rst.getInt(1)).toString());
+            TB_NomArtiste.setText(rst.getString(2));
+            TB_PrenomArtiste.setText(rst.getString(3));
+            TB_Nationalite.setText (rst.getString(4));
          }
 
       
@@ -306,7 +305,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "dernier imposible");
      
      }
-        */
+      
     }//GEN-LAST:event_BTN_DernierActionPerformed
 
     private void BTN_AjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AjouterActionPerformed
@@ -314,6 +313,41 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         new AjoutArtisteForm(connBD).setVisible(true);
       
     }//GEN-LAST:event_BTN_AjouterActionPerformed
+
+    private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
+        // TODO add your handling code here:
+      String sqlupdate ="update Artistes set nomArtiste = ? , prenomArtiste = ? , nationalite = ? where numeroArtiste = " + TB_NumeroArtiste.getText();
+      String nom= TB_NomArtiste.getText();
+      String prenom = TB_PrenomArtiste.getText();
+      String nationalite =TB_Nationalite.getText();
+
+ 
+      try
+         {
+            PreparedStatement stmupdate= connBD.getConnection().prepareStatement(sqlupdate);
+            stmupdate.setString(1,nom);
+            stmupdate.setString(2,prenom);
+            stmupdate.setString(3,nationalite);
+            stmupdate.executeUpdate();
+         }
+      
+      catch(SQLException se){System.out.println("err" + se);}
+        
+    }//GEN-LAST:event_BTN_ModifierActionPerformed
+
+    private void BTN_SupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_SupprimerActionPerformed
+        String sqlDelete = "DELETE FROM ARTISTES WHERE NUMEROARTISTE = "+TB_NumeroArtiste.getText();
+        
+        try
+        {
+            Statement stmDelete = connBD.getConnection().createStatement();
+            stmDelete.executeQuery(sqlDelete);
+        }
+        catch(SQLException se)
+        {
+            System.out.println("err" + se);
+        }
+    }//GEN-LAST:event_BTN_SupprimerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,6 +386,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
    // Declartion des autres variables.  
    ConnectionOracle connBD;
    ResultSet rst ;
+   String sql1 = "Select numeroartiste,nomartiste,prenomartiste,nationalite from artistes";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;
