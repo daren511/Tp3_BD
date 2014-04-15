@@ -83,6 +83,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="cotefran"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -109,6 +112,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="TB_Password">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="oracle1"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

@@ -42,6 +42,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
         TB_AjoutPrenomArtiste = new javax.swing.JTextField();
         TB_AjoutNationalite = new javax.swing.JTextField();
         BTN_OK = new javax.swing.JButton();
+        BTN_Cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,34 +63,44 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
             }
         });
 
+        BTN_Cancel.setText("Cancel");
+        BTN_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TB_AjoutNumArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(TB_AjoutNomArtiste)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
                                 .addGap(17, 17, 17)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TB_AjoutPrenomArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                                     .addComponent(TB_AjoutNationalite)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TB_AjoutNumArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(TB_AjoutNomArtiste)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(BTN_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BTN_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)))))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -112,7 +123,9 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(TB_AjoutNationalite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(BTN_OK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_OK)
+                    .addComponent(BTN_Cancel))
                 .addContainerGap())
         );
 
@@ -122,7 +135,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
     private void BTN_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OKActionPerformed
         // TODO add your handling code here:
       String sqlajout ="insert into artistes (nomartiste,prenomartiste,nationalite) values(?,?,?)";
-      //int numArtiste = Integer.parseInt(TB_AjoutNumArtiste.getText());
+
       String nomArtiste= TB_AjoutNomArtiste.getText();
       String prenomArtiste = TB_AjoutPrenomArtiste.getText();
       String nationaliteArtiste =TB_AjoutNationalite.getText();
@@ -130,7 +143,6 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
       try
          {
             PreparedStatement stminsert= connBD.getConnection().prepareStatement(sqlajout);
-           // stminsert.setInt(1, numArtiste);
             stminsert.setString(1, nomArtiste);
             stminsert.setString(2, prenomArtiste);
             stminsert.setString(3, nationaliteArtiste);
@@ -143,6 +155,11 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
         this.dispose();
       }
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_BTN_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,6 +200,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
    ConnectionOracle connBD;
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Cancel;
     private javax.swing.JButton BTN_OK;
     private javax.swing.JTextField TB_AjoutNationalite;
     private javax.swing.JTextField TB_AjoutNomArtiste;

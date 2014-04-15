@@ -34,6 +34,7 @@ public class JFrameGestion extends javax.swing.JFrame {
 
         BTN_Disques = new javax.swing.JButton();
         BTN_Artistes = new javax.swing.JButton();
+        BTN_ArtisteDisque = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +52,13 @@ public class JFrameGestion extends javax.swing.JFrame {
             }
         });
 
+        BTN_ArtisteDisque.setText("Affectation Artiste -> Disque");
+        BTN_ArtisteDisque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_ArtisteDisqueActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,13 +67,19 @@ public class JFrameGestion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(BTN_Disques)
                 .addGap(18, 18, 18)
-                .addComponent(BTN_Artistes, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addComponent(BTN_Artistes, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(BTN_ArtisteDisque)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(BTN_ArtisteDisque, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Artistes, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_Disques, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -78,16 +92,22 @@ public class JFrameGestion extends javax.swing.JFrame {
     private void BTN_DisquesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_DisquesActionPerformed
         // TODO add your handling code here
         new GestionDisqueForm(connBD).setVisible(true);
-        this.dispose();
+        
  
     }//GEN-LAST:event_BTN_DisquesActionPerformed
 
     private void BTN_ArtistesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ArtistesActionPerformed
         // TODO add your handling code here:
         new GestionArtistesForm(connBD).setVisible(true);
-        this.dispose();
+        
   
     }//GEN-LAST:event_BTN_ArtistesActionPerformed
+
+    private void BTN_ArtisteDisqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ArtisteDisqueActionPerformed
+        // TODO add your handling code here:
+        new AjoutDisqueArtiste(connBD).setVisible(true);
+        
+    }//GEN-LAST:event_BTN_ArtisteDisqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,6 +146,7 @@ public class JFrameGestion extends javax.swing.JFrame {
 // Declartion des autres variables.  
    ConnectionOracle connBD;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_ArtisteDisque;
     private javax.swing.JButton BTN_Artistes;
     private javax.swing.JButton BTN_Disques;
     // End of variables declaration//GEN-END:variables

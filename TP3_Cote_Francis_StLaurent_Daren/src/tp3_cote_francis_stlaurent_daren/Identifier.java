@@ -50,6 +50,8 @@ public class Identifier extends javax.swing.JFrame {
             }
         });
 
+        jTextUser.setText("cotefran");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Nom usager");
 
@@ -62,6 +64,8 @@ public class Identifier extends javax.swing.JFrame {
                 jBdeconnecterActionPerformed(evt);
             }
         });
+
+        TB_Password.setText("oracle1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

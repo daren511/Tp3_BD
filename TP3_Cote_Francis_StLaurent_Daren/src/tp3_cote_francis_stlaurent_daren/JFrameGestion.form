@@ -27,15 +27,22 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="BTN_Disques" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BTN_Artistes" pref="133" max="32767" attributes="0"/>
+              <Component id="BTN_Artistes" pref="141" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <Component id="BTN_ArtisteDisque" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="71" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="BTN_ArtisteDisque" pref="64" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTN_Artistes" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="BTN_Disques" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
@@ -60,6 +67,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ArtistesActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_ArtisteDisque">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Affectation Artiste -&gt; Disque"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_ArtisteDisqueActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

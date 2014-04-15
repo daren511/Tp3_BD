@@ -21,6 +21,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
     public AjoutDisqueForm(ConnectionOracle conn) {
         initComponents();
         this.connBD = conn;
+        listerGenre();
     }
 
     /**
@@ -38,15 +39,16 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
         jLabel41 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
         BTN_OK = new javax.swing.JButton();
         TB_NumDisque = new javax.swing.JTextField();
         TB_Titre = new javax.swing.JTextField();
         TB_Prix = new javax.swing.JTextField();
-        TB_Genre = new javax.swing.JTextField();
         TB_Annee = new javax.swing.JTextField();
         TB_Langue = new javax.swing.JTextField();
         TB_Nbchansons = new javax.swing.JTextField();
+        labelchanson = new javax.swing.JLabel();
+        CB_Genre = new javax.swing.JComboBox();
+        BTN_Cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,12 +64,21 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
 
         jLabel61.setText("Langue");
 
-        jLabel71.setText("Nb de chansons");
-
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_OKActionPerformed(evt);
+            }
+        });
+
+        TB_NumDisque.setEnabled(false);
+
+        labelchanson.setText("NbChansons");
+
+        BTN_Cancel.setText("Cancel");
+        BTN_Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_CancelActionPerformed(evt);
             }
         });
 
@@ -76,32 +87,33 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel51)
+                    .addComponent(jLabel61)
+                    .addComponent(labelchanson))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TB_Nbchansons)
+                    .addComponent(TB_Langue)
+                    .addComponent(TB_Annee)
+                    .addComponent(TB_Prix)
+                    .addComponent(TB_Titre)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel31)
-                            .addComponent(jLabel41)
-                            .addComponent(jLabel51)
-                            .addComponent(jLabel61)
-                            .addComponent(jLabel71))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TB_Nbchansons)
-                            .addComponent(TB_Langue)
-                            .addComponent(TB_Annee)
-                            .addComponent(TB_Genre)
-                            .addComponent(TB_Prix)
-                            .addComponent(TB_Titre)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TB_NumDisque, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(BTN_OK)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addComponent(TB_NumDisque, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(CB_Genre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(BTN_OK)
+                .addGap(29, 29, 29)
+                .addComponent(BTN_Cancel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +133,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
-                    .addComponent(TB_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CB_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
@@ -132,46 +144,66 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
                     .addComponent(TB_Langue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel71)
-                    .addComponent(TB_Nbchansons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TB_Nbchansons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelchanson))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(BTN_OK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_OK)
+                    .addComponent(BTN_Cancel))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listerGenre()
+    {
+        String sqlGenre = "select numgenre,nomgenre from Genres";
+        try
+        {
+            Statement stmGenre = connBD.getConnection().createStatement();
+            ResultSet rstGenre = stmGenre.executeQuery(sqlGenre);
+            while(rstGenre.next())
+            {
+                CB_Genre.addItem(rstGenre.getString(1)+" "+rstGenre.getString(2));
+            }
+        }
+        catch(SQLException sqlex){ System.out.println(sqlex);}
+    }
     private void BTN_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OKActionPerformed
 
         // TODO add your handling code here:
-      String sqlajout ="insert into Disques (titredisque,prix,numgenre,anneedisque,langue.nbchansons) values(?,?,?,?,?,?)";
+      String sqlajout ="insert into Disques (titredisque,prix,numgenre,anneedisque,langue,nbchansons) values(?,?,?,?,?,?)";
       String titre= TB_Titre.getText();
       int prix = Integer.parseInt(TB_Prix.getText());
-      int genre =Integer.parseInt(TB_Genre.getText());
+      int genre =Integer.parseInt(CB_Genre.getSelectedItem().toString().substring(0, 1));
       int annee = Integer.parseInt(TB_Annee.getText());
       String langue = TB_Langue.getText();
-      int nbchansons = Integer.parseInt(TB_Nbchanson.getText());
+      int nbchansons = Integer.parseInt(TB_Nbchansons.getText());
 
       try
          {
-            PreparedStatement stmupdate= connBD.getConnection().prepareStatement(sqlupdate);
-            stmupdate.setString(1,titre);
-            stmupdate.setInt(2,prix);
-            stmupdate.setInt(3,genre);
-            stmupdate.setInt(4, annee);
-            stmupdate.setString(5, langue);
-            stmupdate.setInt(6, nbchansons);
-            stmupdate.executeUpdate();
+            PreparedStatement stmajout= connBD.getConnection().prepareStatement(sqlajout);
+            stmajout.setString(1,titre);
+            stmajout.setInt(2,prix);
+            stmajout.setInt(3,genre);
+            stmajout.setInt(4, annee);
+            stmajout.setString(5, langue);
+            stmajout.setInt(6, nbchansons);
+            stmajout.executeUpdate();
          }
-      
+
       catch(SQLException se){System.out.println("err" + se);}
       finally
       {
         this.dispose();
       }
-    }                                  
     }//GEN-LAST:event_BTN_OKActionPerformed
+
+    private void BTN_CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_BTN_CancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +212,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -206,15 +238,17 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
                 //new AjoutDisqueForm().setVisible(true);
             }
         });
-    }
+}
 
-    // Declartion des autres variables.  
+
+    // Declartion des autres variables.
    ConnectionOracle connBD;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_Cancel;
     private javax.swing.JButton BTN_OK;
+    private javax.swing.JComboBox CB_Genre;
     private javax.swing.JTextField TB_Annee;
-    private javax.swing.JTextField TB_Genre;
     private javax.swing.JTextField TB_Langue;
     private javax.swing.JTextField TB_Nbchansons;
     private javax.swing.JTextField TB_NumDisque;
@@ -226,6 +260,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel labelchanson;
     // End of variables declaration//GEN-END:variables
+
 }

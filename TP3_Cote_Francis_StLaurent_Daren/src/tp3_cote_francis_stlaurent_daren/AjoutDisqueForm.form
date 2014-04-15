@@ -24,38 +24,37 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel61" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel71" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="TB_Nbchansons" max="32767" attributes="0"/>
-                          <Component id="TB_Langue" max="32767" attributes="0"/>
-                          <Component id="TB_Annee" max="32767" attributes="0"/>
-                          <Component id="TB_Genre" max="32767" attributes="0"/>
-                          <Component id="TB_Prix" max="32767" attributes="0"/>
-                          <Component id="TB_Titre" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="TB_NumDisque" min="-2" pref="95" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                      <Component id="BTN_OK" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel51" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel61" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelchanson" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="TB_Nbchansons" max="32767" attributes="0"/>
+                  <Component id="TB_Langue" max="32767" attributes="0"/>
+                  <Component id="TB_Annee" max="32767" attributes="0"/>
+                  <Component id="TB_Prix" max="32767" attributes="0"/>
+                  <Component id="TB_Titre" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="TB_NumDisque" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="CB_Genre" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Component id="BTN_OK" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="BTN_Cancel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,7 +79,7 @@
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TB_Genre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CB_Genre" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -94,11 +93,14 @@
               </Group>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="TB_Nbchansons" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelchanson" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Component id="BTN_OK" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BTN_OK" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BTN_Cancel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -135,11 +137,6 @@
         <Property name="text" type="java.lang.String" value="Langue"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel71">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nb de chansons"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="BTN_OK">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
@@ -149,18 +146,39 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TB_NumDisque">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TB_Titre">
     </Component>
     <Component class="javax.swing.JTextField" name="TB_Prix">
-    </Component>
-    <Component class="javax.swing.JTextField" name="TB_Genre">
     </Component>
     <Component class="javax.swing.JTextField" name="TB_Annee">
     </Component>
     <Component class="javax.swing.JTextField" name="TB_Langue">
     </Component>
     <Component class="javax.swing.JTextField" name="TB_Nbchansons">
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelchanson">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="NbChansons"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CB_Genre">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTN_Cancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_CancelActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
