@@ -154,8 +154,8 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
         // TODO add your handling code here:
         String sqlajout ="insert into ArtisteDisques (numeroartiste,numerodisque) values(?,?)";
 
-      int disque =Integer.parseInt(CB_Disque.getSelectedItem().toString().substring(0, 2));
-      int artiste =Integer.parseInt(CB_Artiste.getSelectedItem().toString().substring(0, 2));
+      int disque =Integer.parseInt(CB_Disque.getSelectedItem().toString().substring(0, 1));
+      int artiste =Integer.parseInt(CB_Artiste.getSelectedItem().toString().substring(0, 1));
 
       try
          {
