@@ -119,28 +119,28 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
 
     private void listerDisque()
     {
-        String sqlGenre = "select numerodisque,titredisque from Disques";
+        String sqlGenre = "select numerodisque from Disques";
         try
         {
             Statement stmDisque = connBD.getConnection().createStatement();
             ResultSet rstDisque = stmDisque.executeQuery(sqlGenre);
             while(rstDisque.next())
             {
-                CB_Disque.addItem(rstDisque.getString(1)+ " "+ rstDisque.getString(2));
+                CB_Disque.addItem(rstDisque.getString(1));
             }
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
     }
     private void listerArtiste()
     {
-        String sqlArtiste = "select numeroartiste,prenomArtiste,nomArtiste from Artistes";
+        String sqlArtiste = "select numeroartiste from Artistes";
         try
         {
             Statement stmGenre = connBD.getConnection().createStatement();
             ResultSet rstArtiste = stmGenre.executeQuery(sqlArtiste);
             while(rstArtiste.next())
             {
-                CB_Artiste.addItem(rstArtiste.getString(1)+ " "+ rstArtiste.getString(2) +" "+ rstArtiste.getString(3) );
+                CB_Artiste.addItem(rstArtiste.getString(1));
             }
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
@@ -153,15 +153,16 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
     private void BTN_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OKActionPerformed
         // TODO add your handling code here:
         String sqlajout ="insert into ArtisteDisques (numeroartiste,numerodisque) values(?,?)";
-
-      int disque =Integer.parseInt(CB_Disque.getSelectedItem().toString().substring(0, 1));
-      int artiste =Integer.parseInt(CB_Artiste.getSelectedItem().toString().substring(0, 1));
+      
+      int artiste =Integer.parseInt(CB_Artiste.getSelectedItem().toString());
+      int disque =Integer.parseInt(CB_Disque.getSelectedItem().toString());
+      
 
       try
          {
             PreparedStatement stminsert= connBD.getConnection().prepareStatement(sqlajout);
-            stminsert.setInt(1, disque);
-            stminsert.setInt(2, artiste);
+            stminsert.setInt(1, artiste);
+            stminsert.setInt(2, disque);
             stminsert.executeUpdate();
          }
       
