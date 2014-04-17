@@ -26,7 +26,8 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         this.connBD = conn;
         // appel du bouton premier
         BTN_Premier.doClick();
-        listerGenre();
+        listerGenreRecherche();
+        //listerGenreCB();
     }
 
     /**
@@ -67,6 +68,10 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         Liste_ParGenre = new javax.swing.JList();
         BTN_Recherche = new javax.swing.JButton();
         CB_Recherche = new javax.swing.JComboBox();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Liste_RechercheCD = new javax.swing.JList();
+        TB_RechercherCD = new javax.swing.JTextField();
+        BTN_RechercherCD = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,59 +165,69 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setViewportView(Liste_RechercheCD);
+
+        BTN_RechercherCD.setText("Rechercher CD par nom");
+        BTN_RechercherCD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_RechercherCDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(TB_Nbchanson, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTN_Premier)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Precedent)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Suivant)
-                                .addGap(18, 18, 18)
-                                .addComponent(BTN_Dernier))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(CB_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel6))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(TB_Langue, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(TB_Annee, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TB_Titre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TB_NumDisque, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel10))
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BTN_Supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BTN_Modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BTN_Ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(34, 34, 34))
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(TB_Nbchanson, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(BTN_Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(BTN_Premier)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Precedent)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Suivant)
+                        .addGap(18, 18, 18)
+                        .addComponent(BTN_Dernier))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(CB_Genre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(TB_Langue, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TB_Annee, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(TB_Prix, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TB_Titre, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TB_NumDisque, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10))
+                        .addGap(91, 91, 91)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTN_Supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_Modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_Ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CB_Recherche, 0, 276, Short.MAX_VALUE)
+                    .addComponent(BTN_RechercherCD, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(TB_RechercherCD)
+                        .addComponent(jScrollPane3)
+                        .addComponent(CB_Recherche, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                         .addComponent(BTN_ListerArtiste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2)
@@ -273,19 +288,22 @@ public class GestionDisqueForm extends javax.swing.JFrame {
                             .addComponent(BTN_Dernier))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CB_Recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BTN_Ok)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BTN_Recherche)
-                        .addContainerGap())))
+                .addGap(18, 18, 18)
+                .addComponent(BTN_Recherche)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TB_RechercherCD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_RechercherCD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(BTN_Ok)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void listerGenre()
+    private void listerGenreRecherche()
     {
         String sqlGenre = "select nomgenre from Genres";
         try
@@ -294,12 +312,29 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             ResultSet rstGenre = stmGenre.executeQuery(sqlGenre);
             while(rstGenre.next())
             {
-                CB_Genre.addItem(rstGenre.getString(1));
                 CB_Recherche.addItem(rstGenre.getString(1));
+                CB_Genre.addItem(rstGenre.getString(1));
             }
         }
         catch(SQLException sqlex){ System.out.println(sqlex);}
     }
+    /*
+    private void listerGenreCB()
+    {
+        String sqlGenre = "select numgenre,nomgenre from Genres";
+        try
+        {
+            Statement stmGenre = connBD.getConnection().createStatement();
+            ResultSet rstGenre = stmGenre.executeQuery(sqlGenre);
+            while(rstGenre.next())
+            {
+                CB_Genre.addItem(rstGenre.getString(1)+" "+rstGenre.getString(2));
+            }
+        }
+        catch(SQLException sqlex){ System.out.println(sqlex);}
+    }
+    */
+    
     private void BTN_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_OkActionPerformed
         // TODO add your handling code here:
          new JFrameGestion(connBD).setVisible(true);
@@ -421,11 +456,11 @@ public class GestionDisqueForm extends javax.swing.JFrame {
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdate ="update Disques set titredisque = ? , prix = ? , numgenre = ?,anneedisque = ?,langue = ?, nbchansons = ? where numerodisque = " + TB_NumDisque.getText();
-      
+      String sqlupdate ="update Disques set titredisque = ? , prix = ? ,anneedisque = ?,langue = ?, nbchansons = ? where numerodisque = " + TB_NumDisque.getText();
+      String sqlupdateGenre = "update Disques set D.numgenre = ? From Disques D Inner join Genres G on G.numgenre = D.numgenre where nomgenre = "+ CB_Genre.getSelectedItem().toString();
       String titre= TB_Titre.getText();
       int prix = Integer.parseInt(TB_Prix.getText());
-      int genre =Integer.parseInt(CB_Genre.getSelectedItem().toString().substring(0, 1));
+      String genre =CB_Genre.getSelectedItem().toString();
       int annee = Integer.parseInt(TB_Annee.getText());
       String langue = TB_Langue.getText();
       int nbchansons = Integer.parseInt(TB_Nbchanson.getText());
@@ -433,12 +468,13 @@ public class GestionDisqueForm extends javax.swing.JFrame {
       try
          {
             PreparedStatement stmajout= connBD.getConnection().prepareStatement(sqlupdate);
+            PreparedStatement stmajoutGenre = connBD.getConnection().prepareStatement(sqlupdateGenre);
             stmajout.setString(1,titre);
             stmajout.setInt(2,prix);
-            stmajout.setInt(3,genre);
-            stmajout.setInt(4, annee);
-            stmajout.setString(5, langue);
-            stmajout.setInt(6, nbchansons);
+            stmajoutGenre.setString(1,genre);
+            stmajout.setInt(3, annee);
+            stmajout.setString(4, langue);
+            stmajout.setInt(5, nbchansons);
             stmajout.executeUpdate();
          }
 
@@ -495,6 +531,24 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         catch(SQLException sqlex){ System.out.println(sqlex);}
     }//GEN-LAST:event_BTN_RechercheActionPerformed
 
+    private void BTN_RechercherCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_RechercherCDActionPerformed
+        // TODO add your handling code here:
+        String sqlRechercheCD = "Select titredisque from Disques where titredisque like '%" +TB_RechercherCD.getText()+ "%'";
+        
+        try
+        {
+            Statement stmRecherche = connBD.getConnection().createStatement();
+            ResultSet rst2 = stmRecherche.executeQuery(sqlRechercheCD);
+            DefaultListModel listModel = new DefaultListModel();
+            while(rst2.next())
+            {
+                listModel.addElement(rst2.getString(1).toString());
+            }
+            Liste_RechercheCD.setModel(listModel);
+        }
+        catch(SQLException sqlex){ System.out.println(sqlex);}
+    }//GEN-LAST:event_BTN_RechercherCDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,17 +597,20 @@ public class GestionDisqueForm extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Precedent;
     private javax.swing.JButton BTN_Premier;
     private javax.swing.JButton BTN_Recherche;
+    private javax.swing.JButton BTN_RechercherCD;
     private javax.swing.JButton BTN_Suivant;
     private javax.swing.JButton BTN_Supprimer;
     private javax.swing.JComboBox CB_Genre;
     private javax.swing.JComboBox CB_Recherche;
     private javax.swing.JList Liste_Artiste;
     private javax.swing.JList Liste_ParGenre;
+    private javax.swing.JList Liste_RechercheCD;
     private javax.swing.JTextField TB_Annee;
     private javax.swing.JTextField TB_Langue;
     private javax.swing.JTextField TB_Nbchanson;
     private javax.swing.JTextField TB_NumDisque;
     private javax.swing.JTextField TB_Prix;
+    private javax.swing.JTextField TB_RechercherCD;
     private javax.swing.JTextField TB_Titre;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -564,5 +621,6 @@ public class GestionDisqueForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }

@@ -169,6 +169,7 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
       catch(SQLException se){System.out.println("err" + se);}
       finally
       {
+        
         this.dispose();
       }
     }//GEN-LAST:event_BTN_OKActionPerformed
