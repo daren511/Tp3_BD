@@ -164,6 +164,7 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
             stminsert.setInt(1, artiste);
             stminsert.setInt(2, disque);
             stminsert.executeUpdate();
+            stminsert.execute("commit");
          }
       
       catch(SQLException se){System.out.println("err" + se);}

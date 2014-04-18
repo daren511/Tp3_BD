@@ -398,6 +398,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
             stmupdate.setString(2,prenom);
             stmupdate.setString(3,nationalite);
             stmupdate.executeUpdate();
+            stmupdate.execute("commit");
          }
       
       catch(SQLException se){System.out.println("err" + se);}
@@ -411,6 +412,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         {
             Statement stmDelete = connBD.getConnection().createStatement();
             stmDelete.executeQuery(sqlDelete);
+            stmDelete.execute("commit"); 
         }
         catch(SQLException se)
         {

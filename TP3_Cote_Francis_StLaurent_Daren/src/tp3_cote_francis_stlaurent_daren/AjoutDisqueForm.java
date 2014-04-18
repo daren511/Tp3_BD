@@ -191,6 +191,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
             stmajout.setString(5, langue);
             stmajout.setInt(6, nbchansons);
             stmajout.executeUpdate();
+            stmajout.execute("commit");
          }
 
       catch(SQLException se){System.out.println("err" + se);}

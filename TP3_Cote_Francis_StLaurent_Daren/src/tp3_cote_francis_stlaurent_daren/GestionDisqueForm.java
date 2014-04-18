@@ -352,7 +352,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             TB_NumDisque.setText (((Integer)rst.getInt(1)).toString());
             TB_Titre.setText(rst.getString(2));
             TB_Prix.setText(((Integer)rst.getInt(3)).toString());
-            CB_Genre.setSelectedItem(rst.getString(4).toString());
+            CB_Genre.setSelectedItem(rst.getString(4));
             TB_Annee.setText(((Integer)rst.getInt(5)).toString());
             TB_Langue.setText(rst.getString(6));
             TB_Nbchanson.setText (((Integer)rst.getInt(7)).toString());
@@ -369,12 +369,12 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try 
        {
-          if (rst.first())
+          if (rst.previous())
          {
             TB_NumDisque.setText (((Integer)rst.getInt(1)).toString());
             TB_Titre.setText(rst.getString(2));
             TB_Prix.setText(((Integer)rst.getInt(3)).toString());
-            CB_Genre.setSelectedItem(rst.getString(4).toString());
+            CB_Genre.setSelectedItem(rst.getString(4));
             TB_Annee.setText(((Integer)rst.getInt(5)).toString());
             TB_Langue.setText(rst.getString(6));
             TB_Nbchanson.setText (((Integer)rst.getInt(7)).toString());
@@ -402,7 +402,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             TB_NumDisque.setText (((Integer)rst.getInt(1)).toString());
             TB_Titre.setText(rst.getString(2));
             TB_Prix.setText(((Integer)rst.getInt(3)).toString());
-            CB_Genre.setSelectedItem(rst.getString(4).toString());
+            CB_Genre.setSelectedItem(rst.getString(4));
             TB_Annee.setText(((Integer)rst.getInt(5)).toString());
             TB_Langue.setText(rst.getString(6));
             TB_Nbchanson.setText (((Integer)rst.getInt(7)).toString());
@@ -432,7 +432,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             TB_NumDisque.setText (((Integer)rst.getInt(1)).toString());
             TB_Titre.setText(rst.getString(2));
             TB_Prix.setText(((Integer)rst.getInt(3)).toString());
-            CB_Genre.setSelectedItem(rst.getString(4).toString());
+            CB_Genre.setSelectedItem(rst.getString(4));
             TB_Annee.setText(((Integer)rst.getInt(5)).toString());
             TB_Langue.setText(rst.getString(6));
             TB_Nbchanson.setText (((Integer)rst.getInt(7)).toString());
@@ -456,17 +456,22 @@ public class GestionDisqueForm extends javax.swing.JFrame {
 
     private void BTN_ModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ModifierActionPerformed
         // TODO add your handling code here:
-      String sqlupdate ="update Disques set titredisque = ? , prix = ? ,anneedisque = ?,langue = ?, nbchansons = ? where numerodisque = " + TB_NumDisque.getText();
-      String sqlupdateGenre = "update Disques set D.numgenre = ? From Disques D Inner join Genres G on G.numgenre = D.numgenre where nomgenre = "+ CB_Genre.getSelectedItem().toString();
+      //String sqlupdate ="update Disques set titredisque = ? , prix = ? ,anneedisque = ?,langue = ?, nbchansons = ? where numerodisque = " + TB_NumDisque.getText();
+      //String sqlupdateGenre = "update Disques set D.numgenre = ? From Disques D Inner join Genres G on G.numgenre = D.numgenre where nomgenre = "+ CB_Genre.getSelectedItem().toString();
+     
       String titre= TB_Titre.getText();
       int prix = Integer.parseInt(TB_Prix.getText());
       String genre =CB_Genre.getSelectedItem().toString();
       int annee = Integer.parseInt(TB_Annee.getText());
       String langue = TB_Langue.getText();
       int nbchansons = Integer.parseInt(TB_Nbchanson.getText());
-
+      
+      
+      String numgenre = "(select numgenre from Genres where nomgenre = '" + genre + "')";
+      String sql = "update disques set titredisque = '" + titre + "',prix=" + prix + ",numgenre ="+numgenre+",anneedisque=" + annee + ",langue='" + langue +"',nbChansons =" + nbchansons +" where numerodisque = " + TB_NumDisque.getText();
       try
          {
+            /*
             PreparedStatement stmajout= connBD.getConnection().prepareStatement(sqlupdate);
             PreparedStatement stmajoutGenre = connBD.getConnection().prepareStatement(sqlupdateGenre);
             stmajout.setString(1,titre);
@@ -476,6 +481,11 @@ public class GestionDisqueForm extends javax.swing.JFrame {
             stmajout.setString(4, langue);
             stmajout.setInt(5, nbchansons);
             stmajout.executeUpdate();
+            */
+             
+            Statement stm = connBD.getConnection().createStatement();
+            stm.execute(sql);
+            stm.execute("commit");
          }
 
       catch(SQLException se){System.out.println("err" + se);}
@@ -488,6 +498,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         {
             Statement stmDelete = connBD.getConnection().createStatement();
             stmDelete.executeQuery(sqlDelete);
+            stmDelete.executeQuery("commit");
         }
         catch(SQLException se)
         {

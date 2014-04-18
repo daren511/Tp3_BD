@@ -147,6 +147,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
             stminsert.setString(2, prenomArtiste);
             stminsert.setString(3, nationaliteArtiste);
             stminsert.executeUpdate();
+            stminsert.execute("commit");
          }
       
       catch(SQLException se){System.out.println("err" + se);}
