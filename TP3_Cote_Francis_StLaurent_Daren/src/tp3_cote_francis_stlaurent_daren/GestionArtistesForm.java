@@ -389,6 +389,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
       String nom= TB_NomArtiste.getText();
       String prenom = TB_PrenomArtiste.getText();
       String nationalite =TB_Nationalite.getText();
+      
 
  
       try
@@ -494,6 +495,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
    ConnectionOracle connBD;
    ResultSet rst ;
    String sql1 = "Select numeroartiste,nomartiste,prenomartiste,nationalite from artistes";
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Ajouter;

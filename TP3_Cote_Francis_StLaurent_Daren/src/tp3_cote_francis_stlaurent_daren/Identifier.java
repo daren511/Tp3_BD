@@ -128,6 +128,7 @@ public class Identifier extends javax.swing.JFrame {
       // TODO add your handling code here:
          connBD.deconnecter();
          System.exit(0);
+         
    }//GEN-LAST:event_jBdeconnecterActionPerformed
 
    /**
