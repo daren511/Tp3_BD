@@ -44,7 +44,7 @@ public class AjoutArtisteForm extends javax.swing.JFrame {
         BTN_OK = new javax.swing.JButton();
         BTN_Cancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setText("# artiste");
 

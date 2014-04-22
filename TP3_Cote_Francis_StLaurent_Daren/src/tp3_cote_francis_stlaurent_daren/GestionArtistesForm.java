@@ -77,7 +77,7 @@ public class GestionArtistesForm extends javax.swing.JFrame {
         BTN_Recherche_CD = new javax.swing.JButton();
         BTN_refresh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {

@@ -42,7 +42,7 @@ public class AjoutDisqueArtiste extends javax.swing.JFrame {
         CB_Disque = new javax.swing.JComboBox();
         CB_Artiste = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BTN_OK.setText("OK");
         BTN_OK.addActionListener(new java.awt.event.ActionListener() {

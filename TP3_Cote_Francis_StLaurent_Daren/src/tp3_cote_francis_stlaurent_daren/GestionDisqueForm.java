@@ -74,7 +74,7 @@ public class GestionDisqueForm extends javax.swing.JFrame {
         BTN_RechercherCD = new javax.swing.JButton();
         BTN_Refresh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BTN_Ok.setText("Ok");
         BTN_Ok.addActionListener(new java.awt.event.ActionListener() {

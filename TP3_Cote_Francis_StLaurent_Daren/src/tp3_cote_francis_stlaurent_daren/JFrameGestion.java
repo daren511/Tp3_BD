@@ -36,7 +36,7 @@ public class JFrameGestion extends javax.swing.JFrame {
         BTN_Artistes = new javax.swing.JButton();
         BTN_ArtisteDisque = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BTN_Disques.setText("Gestion des disques");
         BTN_Disques.addActionListener(new java.awt.event.ActionListener() {
