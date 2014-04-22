@@ -175,7 +175,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
         // TODO add your handling code here:
       String sqlajout ="insert into Disques (titredisque,prix,numgenre,anneedisque,langue,nbchansons) values(?,?,?,?,?,?)";
       String titre= TB_Titre.getText();
-      int prix = Integer.parseInt(TB_Prix.getText());
+      double prix = Double.parseDouble(TB_Prix.getText());
       int genre =Integer.parseInt(CB_Genre.getSelectedItem().toString().substring(0, 1));
       int annee = Integer.parseInt(TB_Annee.getText());
       String langue = TB_Langue.getText();
@@ -185,7 +185,7 @@ public class AjoutDisqueForm extends javax.swing.JFrame {
          {
             PreparedStatement stmajout= connBD.getConnection().prepareStatement(sqlajout);
             stmajout.setString(1,titre);
-            stmajout.setInt(2,prix);
+            stmajout.setDouble(2,prix);
             stmajout.setInt(3,genre);
             stmajout.setInt(4, annee);
             stmajout.setString(5, langue);
